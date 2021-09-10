@@ -3,6 +3,8 @@ package pl.szkolaandroida.logintest
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions
+import androidx.test.espresso.intent.Intents
+import androidx.test.espresso.intent.matcher.IntentMatchers
 import androidx.test.espresso.matcher.ViewMatchers
 import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.runBlocking
@@ -45,5 +47,9 @@ class LoginRobot(private val loginApi: LoginApi) {
     fun usernameCantBeEmpty() {
         onView(ViewMatchers.withId(R.id.usernameError))
             .check(ViewAssertions.matches(ViewMatchers.withText(R.string.username_cant_be_empty)))
+    }
+
+    fun checkGoToMain() {
+        Intents.intended(IntentMatchers.hasComponent(MainActivity::class.java.name))
     }
 }

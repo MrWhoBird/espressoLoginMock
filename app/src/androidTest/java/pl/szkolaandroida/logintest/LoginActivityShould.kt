@@ -1,7 +1,5 @@
 package pl.szkolaandroida.logintest
 
-import androidx.test.espresso.intent.Intents.intended
-import androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent
 import androidx.test.espresso.intent.rule.IntentsTestRule
 import com.nhaarman.mockitokotlin2.mock
 
@@ -47,7 +45,8 @@ class LoginActivityShould : KoinTest{
             enterUsername("test")
             enterPassword("pass")
             clickLoginBtn()
+            checkGoToMain()
         }
-        intended(hasComponent(MainActivity::class.java.name))
+
     }
 }
